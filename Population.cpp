@@ -1,5 +1,5 @@
 // Population.cpp : This file contains the 'main' function. Program execution begins and ends there.
-// test****
+// test****jkjk
 
 #include <iostream>
 #include <string>
@@ -39,7 +39,7 @@ int main()
 	int births01, births02;
 	int deaths01, deaths02;
 	int p01, p02;
-
+	
 	Population kuzkoz(5, 1, 0, "Kuzkoz");
 	Population pop01;
 
