@@ -1,0 +1,134 @@
+// VectorExamples.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+// for demo purposes only
+class Point
+{
+public:
+	Point() :x_(0), y_(0) {}
+	Point(int a, int b):x_(a), y_(b) {}
+	int x_;
+	int y_;
+	int getX();
+	void setX(int);
+private:
+
+};
+void vectorLikeArray();
+void dynArray();
+void itArray();
+
+int Point::getX() {
+	return x_;
+}
+void Point::setX(int var) {
+	 y_ = var;
+}
+int main()
+{
+	Point pt01(2, 9), pt02(1, 8);
+	std::cout << "x01" << pt01.getX() << std::endl;
+	std::cout << "x02" << pt02.getX() << std::endl;
+	/*vectorLikeArray();
+	dynArray();
+	itArray();*/
+	
+	vector<Point> vecPt; // declaring the vector
+	vector<Point>::iterator i; // declaring an iterator to this vector
+	//vecPt[0] = pt01; // direct method
+	//vecPt.push_back(pt02); // implicit method
+
+	// filling the vector
+	int x = 1, y = 1;
+	for ( i = vecPt.begin(); i != vecPt.end(); i++)
+	{
+		Point pt(x++*2, y++*5);
+		vecPt.push_back(pt);
+	}
+
+	// filling the vector
+	
+	for (i = vecPt.begin(); i != vecPt.end(); i++)
+	{
+		cout << i->getX() << endl;
+	}
+}
+
+// demo of a vector like an array syntax
+void vectorLikeArray()
+{
+	int sz = 3; // not const
+	std::vector<int> vecNumbers(sz); // vect of int of size sz
+
+	for (int i = 0; i < sz; i++)
+	{
+		vecNumbers[i] = i + 1;
+	}
+	
+	std::cout << "Printing the vector" << std::endl;
+	for (int i = 0; i < sz; i++)
+	{
+		std::cout << vecNumbers[i] << std::endl;
+	}
+
+	sz += 1; // increased the var size
+	vecNumbers.resize(sz);
+	vecNumbers[3] = 4;
+
+	std::cout << "Printing the vector after resizing" << std::endl;
+	for (int i = 0; i < sz; i++)
+	{
+		std::cout << vecNumbers[i] << std::endl;
+	}
+}
+
+void dynArray()
+{
+	int sz = 9;
+
+	std::vector<int> nbVec; // create the vector
+	for (int i = 0; i < sz; i++)
+	{
+		nbVec.push_back(i + 1);
+	}
+
+
+	std::cout << "Printing the vector" << std::endl;
+	for (int i = 0; i < sz; i++)
+	{
+		std::cout << nbVec[i] << std::endl;
+	}
+
+
+
+
+
+}
+
+void itArray()
+{
+	std::vector<int> vec;
+	std::vector<int> ::iterator i;
+	std::vector<int> ::reverse_iterator ir;
+	int nbItems = 5;
+	for (int  c = 1; c <= nbItems; c++) // filling the array
+	{
+		vec.push_back(c+1);
+	}
+
+	std::cout << "Array in the order" << std::endl;
+	//using the iterator
+	for (i = vec.begin(); i != vec.end(); i++) // filling the array
+	{
+		std::cout << *i << std::endl;
+	}
+	for ( ir = vec.rbegin(); ir != vec.rend(); ir++)
+	{
+		std::cout << *ir << std::endl;
+	}
+}
